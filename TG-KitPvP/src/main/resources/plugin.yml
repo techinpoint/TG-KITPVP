@@ -1,0 +1,47 @@
+name: TG-KITPVP
+version: '${project.version}'
+main: com.tgkitpvp.TGKitPVP
+api-version: '1.20'
+author: TG
+description: Advanced KitPVP plugin for Paper servers
+website: https://github.com/yourusername/TG-KITPVP
+softdepend: [Vault]
+
+commands:
+  kitpvp:
+    description: Main KitPVP command
+    usage: /kitpvp <join|leave|reload>
+    permission: kitpvp.use
+    aliases: [kpvp]
+  kit:
+    description: Kit management command
+    usage: /kit <select|create|list>
+    permission: kitpvp.use
+  leaderboard:
+    description: Show the KitPVP leaderboard
+    usage: /leaderboard
+    permission: kitpvp.use
+    aliases: [lb, top]
+
+permissions:
+  kitpvp.*:
+    description: Grants all KitPVP permissions
+    children:
+      kitpvp.use: true
+      kitpvp.admin: true
+  kitpvp.use:
+    description: Allows using basic KitPVP features
+    default: true
+  kitpvp.admin:
+    description: Allows admin commands
+    default: op
+    children:
+      kitpvp.use: true
+      kitpvp.reload: true
+      kitpvp.create: true
+  kitpvp.reload:
+    description: Allows reloading the plugin
+    default: op
+  kitpvp.create:
+    description: Allows creating custom kits
+    default: op
